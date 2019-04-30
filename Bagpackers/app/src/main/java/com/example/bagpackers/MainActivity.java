@@ -1,6 +1,7 @@
 package com.example.bagpackers;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActionBar actionbar=getSupportActionBar();
+        actionbar.hide();
         p=(ImageView) findViewById(R.id.imageView2);
         final Animation a= AnimationUtils.loadAnimation(this,R.anim.fadein);
         p.startAnimation(a);
@@ -27,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-
+                Intent intent =new Intent(MainActivity.this,login.class);
+                startActivity(intent);
 
             }
 
