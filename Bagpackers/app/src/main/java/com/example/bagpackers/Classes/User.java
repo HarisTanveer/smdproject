@@ -1,4 +1,4 @@
-package com.example.bagpackers;
+package com.example.bagpackers.Classes;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

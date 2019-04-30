@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.arch.persistence.room.Room;
 import android.widget.Toast;
 
+import com.example.bagpackers.Classes.User;
+import com.example.bagpackers.RoomDB.AppDatabase;
+
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,17 +50,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public class DataTask extends AsyncTask<Void,Void, List<User>>{
+    public class DataTask extends AsyncTask<Void,Void, Void>{
 
         @Override
-        protected List<User> doInBackground(Void... voids) {
-            AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "users").build();
-            return db.userDao().getAll();
+        protected Void doInBackground(Void... voids) {
+
+            return null;
         }
 
         @Override
-        protected void onPostExecute(List<User> users) {
-            String message = "count:"  + users.size();
+        protected void onPostExecute(Void v) {
+            String message = "deleted";
             Toast.makeText(MainActivity.this,message,Toast.LENGTH_LONG).show();
         }
     }
