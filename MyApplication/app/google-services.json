@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "735501863728",
+    "firebase_url": "https://alpha-bagpackers.firebaseio.com",
+    "project_id": "alpha-bagpackers",
+    "storage_bucket": "alpha-bagpackers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735501863728:android:13c3c6a65bcbec53",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735501863728-e3cl7c1moqev5fpqor5nies29o1d5cor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1OqWHpoLjsGDE64cNFITNvbSE9N81zwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735501863728-e3cl7c1moqev5fpqor5nies29o1d5cor.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
