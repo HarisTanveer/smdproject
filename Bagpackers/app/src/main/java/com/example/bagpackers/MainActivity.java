@@ -1,11 +1,10 @@
 package com.example.bagpackers;
 
-<<<<<<< HEAD
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
-=======
 import android.os.AsyncTask;
->>>>>>> d5420f510a49039efe3f6e0241a036b9373e742b
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -31,16 +30,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
         ActionBar actionbar=getSupportActionBar();
         actionbar.hide();
         p=(ImageView) findViewById(R.id.imageView2);
         final Animation a= AnimationUtils.loadAnimation(this,R.anim.fadein);
-=======
         p = (ImageView) findViewById(R.id.imageView2);
-        final Animation a = AnimationUtils.loadAnimation(this, R.anim.fadein);
->>>>>>> d5420f510a49039efe3f6e0241a036b9373e742b
-        p.startAnimation(a);
 
         u=new User();
         u.email="haristanveer.ht@gmail.com";
@@ -51,15 +45,13 @@ public class MainActivity extends AppCompatActivity {
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
+            @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
             @Override
             public void run() {
 
-<<<<<<< HEAD
                 Intent intent =new Intent(MainActivity.this,login.class);
                 startActivity(intent);
-=======
                 new DataTask().execute();
->>>>>>> d5420f510a49039efe3f6e0241a036b9373e742b
 
             }
 
@@ -67,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     public class DataTask extends AsyncTask<Void,Void, Void>{
 
         @Override
