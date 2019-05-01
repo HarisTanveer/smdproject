@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bagpackers.Classes.User;
+import com.example.bagpackers.Firebase.FirebaseDB;
 import com.example.bagpackers.RoomDB.AppDatabase;
 
 public class login extends AppCompatActivity {
@@ -30,10 +31,11 @@ public class login extends AppCompatActivity {
 
     public void onLogin(View v)
     {
-        new LoginTask().execute();
+        new LoginFirebase().execute();
     }
 
 
+    //Local db se check kry ga using room
     public class LoginTask extends AsyncTask<Void,Void, Boolean> {
 
         @Override
@@ -57,8 +59,36 @@ public class login extends AppCompatActivity {
             else
                 {
 
-                    Toast.makeText(getApplicationContext(),"Invalid Username or Password",Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(),"Invalid Username or Password",Toast.LENGTH_SHORT);
                 }
+        }
+    }
+
+
+    public class LoginFirebase extends AsyncTask<Void,Void,Boolean>
+    {
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+
+            FirebaseDB db=FirebaseDB.getInstance();
+            boolean x=db.Login(email.getText().toString(),password.getText().toString());
+            return x;
+
+        }
+
+        @Override
+        protected void onPostExecute(Boolean b) {
+            if(b)
+            {
+                Intent intent =new Intent(login.this,signup.class);
+                startActivity(intent);
+            }
+            else
+            {
+
+                Toast.makeText(getApplicationContext(),"Invalid Username or Password",Toast.LENGTH_SHORT);
+            }
         }
     }
 
