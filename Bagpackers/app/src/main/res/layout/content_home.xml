@@ -15,7 +15,7 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:onClick="test2"
+            android:onClick="location"
             android:layout_width="483dp"
             android:layout_height="270dp"
             android:background="#000000"

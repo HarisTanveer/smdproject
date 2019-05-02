@@ -3,6 +3,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.graphics.drawable.Drawable;
+
+import com.example.bagpackers.R;
 
 @Entity(foreignKeys = @ForeignKey(entity = Hotels.class,
         parentColumns = "hid",
@@ -29,5 +32,6 @@ public class Place
 
     @ColumnInfo(name = "reviews")
     public String reviews;
+
 
 }

@@ -89,7 +89,6 @@
         android:background="@drawable/round_button"
         android:onClick="onLogin"
         android:text="Login"
-        android:onClick="test"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"

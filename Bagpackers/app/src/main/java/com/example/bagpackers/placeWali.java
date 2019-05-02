@@ -25,20 +25,20 @@ public class placeWali extends AppCompatActivity {
                    case R.id.navigation_home:
                        selectedFragment = placeFrag.newInstance();
                  // mTextMessage.setText(R.string.title_home);
-                    return true;
+                       break;
                 case R.id.navigation_hotel:
                     selectedFragment = hotelFrag.newInstance();
                    // Intent intent =new Intent(placeWali.this,hot);
                    /// startActivity(intent);
                    // mTextMessage.setText(R.string.title_hotel);
 
-                   return true;
+                   break;
                case R.id.navigation_maps:
                     //mTextMessage.setText(R.string.title_maps);
-                   return true;
+                   break;
                 case R.id.navigation_weather:
                     //mTextMessage.setText(R.string.title_weather);
-                    return true;
+                    break;
             }
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, selectedFragment);

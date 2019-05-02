@@ -49,9 +49,13 @@ public class login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    Intent intent =new Intent(login.this,signup.class);
+                    Intent intent =new Intent(login.this,home.class);
                     startActivity(intent);
 
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -103,7 +107,8 @@ public class login extends AppCompatActivity {
     {
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected Void doInBackground(Void... voids)
+        {
 
             return null;
         }
