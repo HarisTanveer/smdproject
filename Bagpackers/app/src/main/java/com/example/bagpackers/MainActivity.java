@@ -15,7 +15,7 @@ import android.arch.persistence.room.Room;
 import android.widget.Toast;
 
 import com.example.bagpackers.Classes.User;
-import com.example.bagpackers.RoomDB.AppDatabase;
+//import com.example.bagpackers.RoomDB.AppDatabase;
 
 import java.util.List;
 import java.util.Timer;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent =new Intent(MainActivity.this,login.class);
                 startActivity(intent);
-                new DataTask().execute();
+//                new DataTask().execute();
 
             }
 
