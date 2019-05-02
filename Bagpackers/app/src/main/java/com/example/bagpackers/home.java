@@ -78,7 +78,13 @@ public class home extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
+public void profilewala(View view)
+{
+    Intent intent =new Intent(this,profile.class);
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    drawer.closeDrawer(GravityCompat.START);
+    startActivity(intent);
+}
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
