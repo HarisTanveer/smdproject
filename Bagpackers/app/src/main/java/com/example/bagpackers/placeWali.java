@@ -31,6 +31,7 @@ public class placeWali extends AppCompatActivity {
                    // Intent intent =new Intent(placeWali.this,hot);
                    /// startActivity(intent);
                    // mTextMessage.setText(R.string.title_hotel);
+
                    break;
                case R.id.navigation_maps:
                     //mTextMessage.setText(R.string.title_maps);

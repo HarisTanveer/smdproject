@@ -42,10 +42,35 @@ public class home extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-    public void test2(View v)
+    public void location(View v)
     {
-        Intent intent =new Intent(this,placeWali.class);
-        startActivity(intent); }
+        Intent intent =new Intent(this,note_list_item.class);
+//        if(v.getId()==R.id.imageView5)
+//        {
+//            intent.putExtra("Province","Gilgit");
+//        }
+//        else if(v.getId()==R.id.imageView7)
+//        {
+//            intent.putExtra("Province","Balochistan");
+//        }
+//        else if(v.getId()==R.id.imageView8)
+//        {
+//            intent.putExtra("Province","Punjab");
+//        }
+//        else if(v.getId()==R.id.imageView9)
+//        {
+//            intent.putExtra("Province","Kashmir");
+//        }
+//        else if(v.getId()==R.id.imageView10)
+//        {
+//            intent.putExtra("Province","Sindh");
+//        }
+        startActivity(intent);
+    }
+
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -109,4 +134,6 @@ public void profilewala(View view)
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
