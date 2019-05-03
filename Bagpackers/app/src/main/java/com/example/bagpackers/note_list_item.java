@@ -38,16 +38,16 @@ public class note_list_item extends AppCompatActivity {
         arr=new ArrayList<>();
         Place p=new Place();
         p.picture="android.resource://com.example.bagpackers/drawable/gilgit";
-        p.name="Place 1";
+        p.name="Lahore";
 
         Place x=new Place();
         x.picture="android.resource://com.example.bagpackers/drawable/ksmr";
-        x.name="Place 2";
+        x.name="New York";
 
 
         Place y=new Place();
         y.picture="android.resource://com.example.bagpackers/drawable/ksmr";
-        y.name="Place 2";
+        y.name="Islamabad";
 
         arr.add(p);
         arr.add(x);
@@ -88,6 +88,17 @@ public class note_list_item extends AppCompatActivity {
         adapter = new TodoListAdapter(this,arr);
         list.setAdapter(adapter);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent intent=new Intent(note_list_item.this,placeWali.class);
+                intent.putExtra("list",arr);
+                intent.putExtra("index",position);
+                startActivity(intent);
+
+            }
+        });
         return list;
     }
 

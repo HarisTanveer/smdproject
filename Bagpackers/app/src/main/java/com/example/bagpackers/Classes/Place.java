@@ -7,10 +7,12 @@ import android.graphics.drawable.Drawable;
 
 import com.example.bagpackers.R;
 
+import java.io.Serializable;
+
 @Entity(foreignKeys = @ForeignKey(entity = Hotels.class,
         parentColumns = "hid",
         childColumns = "hotel"))
-public class Place
+public class Place implements Serializable
 {
     @PrimaryKey
     public int pid;

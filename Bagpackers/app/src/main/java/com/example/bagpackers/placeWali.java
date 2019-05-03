@@ -10,7 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.bagpackers.Classes.Place;
+
+import java.util.ArrayList;
+
 public class placeWali extends AppCompatActivity {
+
+
+
+
 
     private TextView mTextMessage;
 
@@ -34,10 +42,10 @@ public class placeWali extends AppCompatActivity {
 
                    break;
                case R.id.navigation_maps:
-                    //mTextMessage.setText(R.string.title_maps);
+                   selectedFragment = MapFrag.newInstance();
                    break;
                 case R.id.navigation_weather:
-                    //mTextMessage.setText(R.string.title_weather);
+                    selectedFragment = WeatherFrag.newInstance();
                     break;
             }
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -48,6 +56,7 @@ public class placeWali extends AppCompatActivity {
         }
 
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +69,11 @@ public class placeWali extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, placeFrag.newInstance());
         transaction.commit();
+
+
+
+
+
     }
 
 }

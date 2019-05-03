@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+    <script >
+        function myfun(obj)
+        {
+            var x="https://maps.google.com/maps?q="+obj+"&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            document.getElementById("gmap_canvas").src=x;
+
+        }
+    </script>
+
+</head>
+<body height="90%">
+
+    <div class="gmap_canvas">
+
+    <iframe width="100%" height="90%" id="gmap_canvas"  style="position: absolute; top: 0; right: 0; bottom: 0: left: 0; allowfullscreen">
+
+    </iframe>
+
+    <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+
+</div>
+
+</body>
+
+</html>
