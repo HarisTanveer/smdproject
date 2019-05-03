@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class login extends AppCompatActivity {
     private AdView mAdView;
     private TextView email;
     private TextView password;
+    private ProgressBar loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,29 +49,14 @@ public class login extends AppCompatActivity {
         actionbar.hide();
         email=(TextView)findViewById(R.id.editText);
         password=(TextView)findViewById(R.id.editText2);
-
+        loader=findViewById(R.id.loaderLogin);
+        loader.setVisibility(View.GONE);
 
     }
 
     public void onLogin(View v)
     {
-       FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
-        {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    Intent intent =new Intent(login.this,home.class);
-                    startActivity(intent);
-
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
+        new LoginFirebase().execute();
     }
 
 
@@ -115,13 +102,41 @@ public class login extends AppCompatActivity {
 
     public class LoginFirebase extends AsyncTask<Void, Void, Void>
     {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            loader.setVisibility(View.VISIBLE);
 
+        }
         @Override
         protected Void doInBackground(Void... voids)
         {
-
+            loginWithFirebase();
             return null;
         }
     }
+
+
+    public void loginWithFirebase()
+    {
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+        {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    Intent intent =new Intent(login.this,home.class);
+                    startActivity(intent);
+
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+    }
+
 
 }

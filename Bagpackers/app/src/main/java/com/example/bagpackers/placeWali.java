@@ -61,6 +61,7 @@ public class placeWali extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_place_wali);
 
         mTextMessage = (TextView) findViewById(R.id.message);
@@ -69,10 +70,6 @@ public class placeWali extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, placeFrag.newInstance());
         transaction.commit();
-
-
-
-
 
     }
 

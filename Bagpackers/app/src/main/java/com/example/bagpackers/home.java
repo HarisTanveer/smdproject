@@ -1,6 +1,7 @@
 package com.example.bagpackers;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,12 +17,13 @@ import android.view.MenuItem;
 
 public class home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    NetworkChangeReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setupBroadcast();
       //  setSupportActionBar(toolbar);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -135,5 +137,12 @@ public void profilewala(View view)
         return true;
     }
 
+    public void setupBroadcast()
+    {
+        IntentFilter intent1 = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+        receiver =new NetworkChangeReceiver();
+        registerReceiver(receiver,intent1);
+
+    }
 
 }
