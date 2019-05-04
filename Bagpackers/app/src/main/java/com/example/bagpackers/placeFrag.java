@@ -64,5 +64,13 @@ public class placeFrag extends Fragment {
         ImageView a=getView().findViewById(R.id.imageView);
         Uri uri = Uri.parse(placeArrayList.get(index).picture);
         a.setImageURI(uri);
+
+       TextView x= getView().findViewById(R.id.disc);
+        x.setText("Discription: "+placeArrayList.get(index).description);
+
+        TextView y= getView().findViewById(R.id.textView3);
+        y.setText("Location: "+placeArrayList.get(index).location);
+
+
     }
 }

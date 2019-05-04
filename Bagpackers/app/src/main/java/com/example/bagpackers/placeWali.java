@@ -35,7 +35,7 @@ public class placeWali extends AppCompatActivity {
                  // mTextMessage.setText(R.string.title_home);
                        break;
                 case R.id.navigation_hotel:
-                    selectedFragment = hotelFrag.newInstance();
+                    selectedFragment = HotelListItem.newInstance();
                    // Intent intent =new Intent(placeWali.this,hot);
                    /// startActivity(intent);
                    // mTextMessage.setText(R.string.title_hotel);

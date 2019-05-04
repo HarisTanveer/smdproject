@@ -3,6 +3,7 @@ package com.example.bagpackers.Daos;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.example.bagpackers.Classes.Hotels;
@@ -23,10 +24,10 @@ public interface LocationDao
     @Query("Select * from Location where lid = :first limit 1")
     Location findByName(int first);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Location... locations);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Location location);
 
     @Delete

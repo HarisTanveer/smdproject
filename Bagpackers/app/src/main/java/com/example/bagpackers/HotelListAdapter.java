@@ -1,7 +1,6 @@
 package com.example.bagpackers;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,28 +8,27 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bagpackers.Classes.Hotels;
 import com.example.bagpackers.Classes.Place;
-import com.example.bagpackers.R;
 
 import java.util.ArrayList;
 
-public class TodoListAdapter extends ArrayAdapter<com.example.bagpackers.Classes.Place> implements Filterable
+public class HotelListAdapter extends ArrayAdapter<Hotels> implements Filterable
 {
-    private ArrayList<com.example.bagpackers.Classes.Place> todos;
-    private ArrayList<com.example.bagpackers.Classes.Place> filteredtodos;
+    private ArrayList<Hotels> todos;
+    private ArrayList<Hotels> filteredtodos;
     private Filter filter;
 
-    public TodoListAdapter(Context context,ArrayList<com.example.bagpackers.Classes.Place> notes){
+    public HotelListAdapter(Context context, ArrayList<Hotels> notes){
         super(context,0,notes);
         this.todos = notes;
         this.filteredtodos = notes;
     }
 
-    public com.example.bagpackers.Classes.Place getItem(int position){
+    public Hotels getItem(int position){
         return filteredtodos.get(position);
     }
 
@@ -40,23 +38,35 @@ public class TodoListAdapter extends ArrayAdapter<com.example.bagpackers.Classes
 
     public View getView(int position, View convertView,ViewGroup parent)
     {
-        com.example.bagpackers.Classes.Place t= getItem(position);
+        Hotels t= getItem(position);
 
         if(convertView == null)
         {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.activity_note_list_item,parent,false);
+            convertView = inflater.inflate(R.layout.hotel_layout,parent,false);
         }
 
 
      //   convertView.setBackgroundColor(t.getColor()); //Code here to display to listview
 
-        ImageView name = convertView.findViewById(R.id.myImageView);
-        Uri uri = Uri.parse(t.picture);
-        name.setImageURI(uri);
+//        ImageView name = convertView.findViewById(R.id.hotel_pic);
+//        Uri uri = Uri.parse(t.picture);
+//        name.setImageURI(uri);
 
-        TextView place = (TextView) convertView.findViewById(R.id.myImageViewText);
+
+        TextView place = (TextView) convertView.findViewById(R.id.hotel_name);
         place.setText(t.name);
+
+        TextView num = (TextView) convertView.findViewById(R.id.numb);
+        num.setText("Number: "+t.number);
+
+        TextView rating = (TextView) convertView.findViewById(R.id.hotelrating);
+        rating.setText("Rating"+Double.toString(t.rating));
+
+        TextView price = (TextView) convertView.findViewById(R.id.price);
+        price.setText("Price per Room :"+Double.toString(t.rate));
+
+
 
         return convertView;
     }
@@ -76,7 +86,7 @@ public class TodoListAdapter extends ArrayAdapter<com.example.bagpackers.Classes
             FilterResults results = new FilterResults();
             String check=constraint.toString();
             if(constraint != null && constraint.length() > 0){
-                ArrayList<Place> filteredList = new ArrayList<Place>();
+                ArrayList<Hotels> filteredList = new ArrayList<Hotels>();
                 for(int i=0; i < todos.size(); i++){
                     if(todos.get(i).name.contains(check))
                     {
@@ -98,7 +108,7 @@ public class TodoListAdapter extends ArrayAdapter<com.example.bagpackers.Classes
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results)
         {
-            filteredtodos = (ArrayList<Place>) results.values;
+            filteredtodos = (ArrayList<Hotels>) results.values;
             notifyDataSetChanged();
         }
 

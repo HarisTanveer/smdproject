@@ -47,26 +47,26 @@ public class home extends AppCompatActivity
     public void location(View v)
     {
         Intent intent =new Intent(this,note_list_item.class);
-//        if(v.getId()==R.id.imageView5)
-//        {
-//            intent.putExtra("Province","Gilgit");
-//        }
-//        else if(v.getId()==R.id.imageView7)
-//        {
-//            intent.putExtra("Province","Balochistan");
-//        }
-//        else if(v.getId()==R.id.imageView8)
-//        {
-//            intent.putExtra("Province","Punjab");
-//        }
-//        else if(v.getId()==R.id.imageView9)
-//        {
-//            intent.putExtra("Province","Kashmir");
-//        }
-//        else if(v.getId()==R.id.imageView10)
-//        {
-//            intent.putExtra("Province","Sindh");
-//        }
+        if(v.getId()==R.id.imageView5)
+        {
+            intent.putExtra("Province","Gilgit-Baltistan");
+        }
+        else if(v.getId()==R.id.imageView7)
+        {
+            intent.putExtra("Province","Balochistan");
+        }
+        else if(v.getId()==R.id.imageView8)
+        {
+            intent.putExtra("Province","Punjab");
+        }
+        else if(v.getId()==R.id.imageView9)
+        {
+            intent.putExtra("Province","Kashmir");
+        }
+        else if(v.getId()==R.id.imageView10)
+        {
+            intent.putExtra("Province","Sindh");
+        }
         startActivity(intent);
     }
 

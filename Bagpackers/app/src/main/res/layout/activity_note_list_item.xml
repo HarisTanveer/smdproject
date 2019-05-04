@@ -7,43 +7,43 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/aaa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/clayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">// Only works inside a RelativeLayout
 
             <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:padding="1dp"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/gilgit" />
+                android:id="@+id/myImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baloch" />
 
             <TextView
-                android:id="@+id/c"
-                android:layout_width="409dp"
-                android:layout_height="41dp"
-                android:layout_marginTop="221dp"
-                android:layout_marginBottom="32dp"
-                android:text="Place"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </android.support.constraint.ConstraintLayout>
-
+                android:id="@+id/myImageViewText"
+                android:layout_width="410dp"
+                android:layout_height="match_parent"
+                android:layout_alignLeft="@+id/myImageView"
+                android:layout_alignRight="@+id/myImageView"
+                android:layout_alignBottom="@+id/myImageView"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="53dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="-51dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="bottom|left"
+                android:text="Hello"
+                android:textAllCaps="true"
+                android:textColor="#ffff"
+                android:textColorLink="@color/com_facebook_button_background_color_focused"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>
