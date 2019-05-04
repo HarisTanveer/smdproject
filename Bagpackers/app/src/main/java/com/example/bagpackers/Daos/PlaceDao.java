@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.database.Cursor;
 
 import com.example.bagpackers.Classes.Hotels;
 import com.example.bagpackers.Classes.Place;
@@ -14,6 +15,16 @@ import java.util.List;
 @Dao
 public interface PlaceDao
 {
+
+    @Query("DELETE FROM " + "place" + " WHERE " + "pid" + " = :id")
+    int deleteById(long id);
+
+    @Query("SELECT * FROM " + "Place")
+    Cursor selectAll();
+
+    @Query("SELECT * FROM " + "Place" + " WHERE " + "pid" + " = :id")
+    Cursor selectById(long id);
+
     @Query("Select * from Place")
     List<Place> getAll();
 

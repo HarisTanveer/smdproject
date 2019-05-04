@@ -1,10 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
-        <item name="colorPrimaryDark">@color/app</item>
+        <item name="colorPrimary">@color/app</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
         <item name="drawerArrowStyle">@style/DrawerIcon</item>
     </style>
 
@@ -20,3 +22,20 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
+
+<!--<resources>-->
+<!--&lt;!&ndash; Base application theme. values-night.xml &ndash;&gt;-->
+<!--<style name="AppTheme" parent="Theme.AppCompat.DayNight">-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--<item name="colorPrimary">@color/orange</item>-->
+    <!--<item name="colorPrimaryDark">@color/orangeDark</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--<item name="android:textColorPrimary">@android:color/white</item>-->
+<!--</style>-->
+
+<!--<style name="MyDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert"/>-->
+
+<!--<style name="MySwitch">-->
+    <!--<item name="colorControlActivated">@color/switchColor</item>-->
+<!--</style>-->
+<!--</resources>-->

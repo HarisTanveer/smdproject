@@ -15,11 +15,11 @@
         <ImageView
             android:id="@+id/hotel_pic"
             android:layout_width="213dp"
-            android:src="@drawable/hotelicon"
+            android:src="@drawable/hotelicon2"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            tools:srcCompat="@drawable/hotelicon" />
+            tools:srcCompat="@drawable/hotelicon2" />
 
         <LinearLayout
             android:layout_width="240dp"

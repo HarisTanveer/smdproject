@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="431dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -26,7 +26,7 @@
             <TextView
                 android:id="@+id/p"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
+                android:layout_height="214dp"
                 android:text="The Bagpackers is a unique, one-of-its-kind platform which brings together zealous Pakistani travelers from all over the country and aids them in planning and embarking on amazing trips- whenever, wherever, however. Clients approach the Bagpackers with their bucket-list fantasies, dream vacations, perfect destination wedding plans, childhood-wish-fulfillment trips, or even long-awaited adventure tours, and we facilitate them in every way down to every intricate detail arranging a customized trip accurately according to their wishes. Accomplishing their goal of assisting clients to the utmost, the Bagpackers has now launched an app to give our clients ample information and guide them for their travels."
                 android:textAlignment="center" />
 
