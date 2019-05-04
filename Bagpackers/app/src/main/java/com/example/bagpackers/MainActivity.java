@@ -29,11 +29,15 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    Location gilgit;
     ImageView p;
     Timer timer;
     static User u;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+          gilgit=new Location("Gilgit-Baltistan");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActionBar actionbar=getSupportActionBar();
@@ -84,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void popluate()
     {
-        Location  gilgit=new Location("Gilgit-Baltistan");
+
 
 
        // public Place(String name,String location,String description ,String picture)
