@@ -1,6 +1,7 @@
 package com.example.bagpackers;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.os.AsyncTask;
@@ -70,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public class DataTask extends AsyncTask<Void, Void, Void> {
+
+
+
+    public class DataTask extends AsyncTask<Void,Void, Void>{
 
         @Override
         protected Void doInBackground(Void... voids) {

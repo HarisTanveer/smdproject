@@ -5,6 +5,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +22,33 @@ public class home extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent aa= getIntent();
+
+
+        Boolean a;
+        a=aa.getBooleanExtra("night",false);
+
+
+
+        if(a==false)
+        {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        else
+        {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+//        if (InitApplication.getInstance().isNightModeEnabled())
+//        {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        } else
+//            {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        }
+        setContentView(R.layout.activity_main);
+
+
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setupBroadcast();
@@ -118,20 +146,39 @@ public void profilewala(View view)
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
+         if (id == R.id.nav_slideshow) {
+            Intent intent =new Intent(this,home.class);
+            intent.putExtra("night",false);
+            startActivity(intent);
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share)
+
+
+//            InitApplication.getInstance().setIsNightModeEnabled(true);
+//            Intent intent = getIntent();
+
+            Intent intent =new Intent(this,home.class);
+            intent.putExtra("night",true);
+            startActivity(intent);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//            finish();
+//            startActivity(intent);
+
+
+
+        }
+
+
+         else if (id == R.id.nav_share)
         {
             shareIt();
 
 
         } else if (id == R.id.nav_send) {
+            Intent intent =new Intent(this,Aboutus.class);
+            startActivity(intent);
 
         }
 
