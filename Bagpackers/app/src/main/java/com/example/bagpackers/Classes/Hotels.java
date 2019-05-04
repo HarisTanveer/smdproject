@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 @Entity(foreignKeys = @ForeignKey(entity = Place.class,
         parentColumns = "pid",
-        childColumns = "place"))
+        childColumns = "placeid"))
 public class Hotels
 {
     @PrimaryKey

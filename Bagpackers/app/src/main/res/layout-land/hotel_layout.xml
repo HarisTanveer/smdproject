@@ -17,6 +17,8 @@
             android:layout_width="37dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:src="@drawable/hotelicon"
+            android:scaleType="fitCenter"
             tools:srcCompat="@drawable/hotelicon" />
 
         <LinearLayout

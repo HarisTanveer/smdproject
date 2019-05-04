@@ -15,8 +15,10 @@
         <ImageView
             android:id="@+id/hotel_pic"
             android:layout_width="213dp"
+            android:src="@drawable/hotelicon"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:scaleType="fitCenter"
             tools:srcCompat="@drawable/hotelicon" />
 
         <LinearLayout

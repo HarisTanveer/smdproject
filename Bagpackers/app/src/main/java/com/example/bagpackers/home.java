@@ -126,7 +126,10 @@ public void profilewala(View view)
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share)
+        {
+            shareIt();
+
 
         } else if (id == R.id.nav_send) {
 
@@ -136,7 +139,16 @@ public void profilewala(View view)
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
+    private void shareIt() {
+//sharing implementation here
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "Download Bagpackers app from Play store now ! " +
+                "Here is the link: https://play.google.com/store/apps/details?id=com.BagPackers.mobileapp";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
     public void setupBroadcast()
     {
         IntentFilter intent1 = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");

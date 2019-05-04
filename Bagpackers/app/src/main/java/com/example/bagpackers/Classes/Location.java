@@ -3,6 +3,7 @@ package com.example.bagpackers.Classes;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.ArrayList;
@@ -27,7 +28,9 @@ public class Location {
 
     }
 
+    @Ignore
     public ArrayList<Place> places=new ArrayList<>();
+
 
    public Location(String Provinc)
     {
