@@ -14,11 +14,11 @@
 
         <ImageView
             android:id="@+id/hotel_pic"
-            android:layout_width="213dp"
+            android:layout_width="176dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            tools:srcCompat="@drawable/hotelicon" />
 
         <LinearLayout
             android:layout_width="214dp"

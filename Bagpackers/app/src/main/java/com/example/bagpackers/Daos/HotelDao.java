@@ -15,7 +15,7 @@ public interface HotelDao {
     @Query("Select * from hotels")
     List<Hotels> getAll();
 
-    @Query("Select * from hotels where hid In (:placeIds)")
+    @Query("Select * from hotels where Placeid In (:placeIds)")
     List<Hotels> loadAllByIds(int[] placeIds);
 
     @Query("Select * from hotels where hid = :first limit 1")
