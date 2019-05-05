@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.DashPathEffect;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -24,15 +25,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.bagpackers.Classes.Hotels;
 import com.example.bagpackers.Classes.Place;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -42,13 +48,22 @@ public class home extends AppCompatActivity
     MyFirebaseService myService;
     ServiceConnection connection;
     boolean bound = false;
-
+    private FirebaseAuth mAuth;
+    String currentEmail;
+    ImageView r;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(FirebaseAuth.getInstance().getCurrentUser()==null)
+        {
+            Intent intent=new Intent(this,login.class);
+            startActivity(intent);
+
+        }
 
 
-         connection = new ServiceConnection() {
+
+        connection = new ServiceConnection() {
 
             public void onServiceConnected(ComponentName className, IBinder binder) {
                 myService = ((MyFirebaseService.LocalBinder) binder).getService();
@@ -115,6 +130,7 @@ public class home extends AppCompatActivity
 
 
 
+
         startDataSyncService();
     }
 
@@ -170,6 +186,7 @@ public class home extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
+
         return true;
     }
 

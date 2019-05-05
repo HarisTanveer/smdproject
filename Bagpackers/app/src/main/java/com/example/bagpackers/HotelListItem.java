@@ -1,6 +1,9 @@
 package com.example.bagpackers;
 
 import android.arch.persistence.room.Room;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -20,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bagpackers.Classes.Hotels;
 import com.example.bagpackers.Classes.Place;
@@ -72,7 +76,15 @@ public class HotelListItem extends Fragment {
 
         adapter = new HotelListAdapter(getContext(),arr);
         list.setAdapter(adapter);
-
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id)
+            {
+                Toast.makeText(getContext(),"Number copied to Clipboard",Toast.LENGTH_LONG).show();
+                final android.content.ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("Source Text", ""+arr.get(position).number);
+                clipboardManager.setPrimaryClip(clipData);
+            }
+        });
 
         return list;
     }

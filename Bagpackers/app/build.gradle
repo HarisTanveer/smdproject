@@ -36,7 +36,7 @@ dependencies {
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     implementation 'com.google.firebase:firebase-auth:16.2.1'
-
+    implementation 'com.firebaseui:firebase-ui-storage:4.3.2'
     implementation 'com.google.firebase:firebase-core:16.0.8'
 
     implementation'com.google.android.gms:play-services-vision:17.0.2'
@@ -49,5 +49,9 @@ dependencies {
     debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
     implementation 'com.google.firebase:firebase-firestore:18.2.0'
 
+
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 }
 apply plugin: 'com.google.gms.google-services'

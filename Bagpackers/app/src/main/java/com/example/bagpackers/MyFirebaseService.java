@@ -12,9 +12,12 @@ import android.widget.Toast;
 
 import com.example.bagpackers.Classes.Hotels;
 import com.example.bagpackers.Classes.Place;
+import com.example.bagpackers.Classes.User;
 import com.example.bagpackers.RoomDB.AppDatabase;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -24,6 +27,7 @@ public class MyFirebaseService extends Service
 {
     List<Place> types;
     List<Hotels> hotels;
+    List<User> users;
     private final IBinder binder = new LocalBinder();
 
     @Nullable
@@ -47,6 +51,7 @@ public class MyFirebaseService extends Service
             public void run(){
                 DownloadAllHotels();
                 DownloadAllPlaces();
+                DownloadCurrentUser();
             }
         });
 
@@ -153,4 +158,51 @@ public class MyFirebaseService extends Service
             }
         });
     }
+
+    public void DownloadCurrentUser()
+    {
+
+        FirebaseUser a=FirebaseAuth.getInstance().getCurrentUser();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("user").whereEqualTo("email",a.getEmail()).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot documentSnapshots)
+                    {
+                        if (documentSnapshots.isEmpty())
+                        {
+                            Log.d(" ", "onSuccess: LIST EMPTY");
+                            return;
+                        }
+                        else
+                        {
+
+                            users = documentSnapshots.toObjects(User.class);
+
+                            // Add all to your list
+                            Thread t=new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "user").build();
+                                    db.userDao().insertAll(users);
+                                }
+                            });
+                            t.start();
+
+                            Log.d("", "onSuccess: ");
+                        }
+                    }
+
+
+                }).addOnFailureListener(new OnFailureListener()
+        {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }
