@@ -70,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public class DataTask extends AsyncTask<Void, Void, Void> {
-
 
 
     public class DataTask extends AsyncTask<Void,Void, Void>{
