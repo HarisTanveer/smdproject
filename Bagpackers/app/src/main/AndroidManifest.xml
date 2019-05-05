@@ -50,7 +50,9 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".note_list_item"></activity>
+        <activity android:name=".note_list_item" android:configChanges="keyboardHidden|orientation|screenSize">
+
+        </activity>
 
         <receiver
             android:name=".NetworkChangeReceiver"
