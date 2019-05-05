@@ -36,6 +36,7 @@ public class note_list_item extends AppCompatActivity {
     ListView list;
     TodoListAdapter adapter;
     int selectedItem;
+    String loc;
 
 
     @Override
@@ -62,7 +63,7 @@ public class note_list_item extends AppCompatActivity {
 
        new getPlaces().execute();
 
-        createView();
+
     }
 
     private EditText createText(){
@@ -134,7 +135,10 @@ public class note_list_item extends AppCompatActivity {
             return null;
         }
 
-
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            createView();
+        }
     }
 
 
@@ -142,6 +146,7 @@ public class note_list_item extends AppCompatActivity {
     {
         Intent intent=getIntent();
         String location=intent.getStringExtra("Province");
+        loc=location;
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "user").build();
         lis= db.placeDao().getAllbyProvince(location);
         int x=lis.size();
@@ -150,6 +155,13 @@ public class note_list_item extends AppCompatActivity {
         {
             arr.add(lis.get(i));
         }
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        onCreate(savedInstanceState);
 
     }
 }

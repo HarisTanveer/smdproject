@@ -4,8 +4,11 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.google.firebase.firestore.IgnoreExtraProperties;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+@IgnoreExtraProperties
 @Entity
 public class  Place implements Serializable
 {
@@ -49,8 +52,8 @@ public class  Place implements Serializable
 
     }
 
-    @Ignore
-  public  ArrayList<Hotels> hotels=new ArrayList<Hotels>();
+//    @Ignore
+//  public  ArrayList<Hotels> hotels=new ArrayList<Hotels>();
 
 
 

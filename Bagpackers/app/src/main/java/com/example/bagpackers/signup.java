@@ -22,12 +22,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.bagpackers.Classes.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.ByteArrayOutputStream;
@@ -47,15 +56,17 @@ public class signup extends AppCompatActivity {
     private EditText number;
     private ImageView img;
     private static final int PICK_IMAGE_GALLERY_REQUEST_CODE = 0;
-    String currentPhotoPath = "";
+    Uri currentPhotoPath ;
 
-
+    StorageReference storageRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
+       // FirebaseApp.initializeApp(getApplicationContext());
+        storageRef = FirebaseStorage.getInstance().getReference();
         email = findViewById(R.id.editText7);
         password = findViewById(R.id.editText9);
         name = findViewById(R.id.editText3);
@@ -87,6 +98,7 @@ public class signup extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             SignupTask();
+
             return null;
         }
     }
@@ -101,8 +113,8 @@ public class signup extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            Intent intent = new Intent(signup.this, login.class);
-                            startActivity(intent);
+                            uploadPic();
+
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -136,13 +148,7 @@ public class signup extends AppCompatActivity {
         }
     }
 
-    private void openCropActivity(Uri sourceUri) {
-        Uri destinationUri = Uri.fromFile(new File(getApplication().getCacheDir(), "IMG_" + System.currentTimeMillis()));
-        UCrop.of(sourceUri, destinationUri)
-                .withMaxResultSize(1080, 768) // any resolution you want
-                .start(this);
-        img.setImageURI(destinationUri);
-    }
+
 
 
     private void startCropActivity(@NonNull Uri uri) {
@@ -165,10 +171,60 @@ public class signup extends AppCompatActivity {
            String mCurrentPhotoStr = resultUri.getPath();
             Bitmap mPhotoBitmap = BitmapFactory.decodeFile(resultUri.getPath());
             img.setImageBitmap(mPhotoBitmap);
+            currentPhotoPath=resultUri;
         }
 
 
     }
+
+   void uploadPic ()
+    {
+        Uri file=currentPhotoPath;
+        StorageReference riversRef = storageRef.child("images/"+email.getText().toString());
+        UploadTask uploadTask = riversRef.putFile(file);
+
+// Register observers to listen for when the download is done or i f it fails
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                // ...
+                saveUserinFireStore();
+                Intent intent = new Intent(signup.this, login.class);
+                startActivity(intent);
+            }
+        });
+    }
+    
+    public void saveUserinFireStore()
+    {
+        User u=new User();
+        u.email=email.getText().toString();
+        u.name=name.getText().toString();
+        u.number=number.getText().toString();
+        u.password=password.getText().toString();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+// Add a new document with a generated ID
+        db.collection("user")
+                .add(u)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("dasd", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("asd", "Error adding document", e);
+            }
+        });
+    }
+
 
 }
 

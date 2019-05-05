@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "599157418445-gan7qsqhfp4k7fdnmep440v4hvlk0p2p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bagpackers",
+            "certificate_hash": "82ac68f6684b2c2d735d454fe649da3e9fe8011f"
+          }
+        },
+        {
           "client_id": "599157418445-ekn42bo0kqookh3t7qsssteagm6ppnv7.apps.googleusercontent.com",
           "client_type": 3
         }

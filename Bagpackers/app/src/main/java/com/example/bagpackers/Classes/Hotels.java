@@ -7,8 +7,10 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.widget.ImageView;
 
-import java.io.Serializable;
+import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
+@IgnoreExtraProperties
 @Entity
 public class Hotels implements Serializable {
     @PrimaryKey(autoGenerate = true)
