@@ -3,21 +3,24 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 @IgnoreExtraProperties
-@Entity
+@Entity(primaryKeys = {"name","location"})
 public class  Place implements Serializable
 {
-    @PrimaryKey(autoGenerate = true)
-    public int pid;
+//    @PrimaryKey(autoGenerate = true)
+//    public int pid;
 
+    @NonNull
     @ColumnInfo(name = "name")
     public String name;
 
+    @NonNull
     @ColumnInfo(name = "location")
     public String location;
 
@@ -30,10 +33,6 @@ public class  Place implements Serializable
     @ColumnInfo(name = "reviews")
     public String reviews;
 
-    public int getid()
-    {
-        return pid;
-    }
 
 
     public Place()

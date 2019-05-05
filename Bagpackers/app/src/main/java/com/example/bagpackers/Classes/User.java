@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -13,13 +14,16 @@ import java.io.Serializable;
 @Entity
 public class User implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    public int uid;
+//    @PrimaryKey(autoGenerate = true)
+//    public int uid;
 
     @ColumnInfo(name = "name")
     public String name;
 
-    @ColumnInfo(name = "email")
+
+    //@ColumnInfo(name = "email")
+    @NonNull
+    @PrimaryKey
     public String email;
 
     @ColumnInfo(name = "password")

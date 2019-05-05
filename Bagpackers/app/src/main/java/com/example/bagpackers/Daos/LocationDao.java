@@ -18,11 +18,6 @@ public interface LocationDao
     @Query("Select * from Location")
     List<Location> getAll();
 
-    @Query("Select * from Location where lid In (:placeIds)")
-    List<Location> loadAllByIds(int[] placeIds);
-
-    @Query("Select * from Location where lid = :first limit 1")
-    Location findByName(int first);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Location... locations);

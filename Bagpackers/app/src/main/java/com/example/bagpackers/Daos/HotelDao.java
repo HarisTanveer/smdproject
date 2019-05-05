@@ -19,11 +19,9 @@ public interface HotelDao {
     @Query("Select * from hotels where Placeid =:placeIds")
     List<Hotels> loadAllByIds(String placeIds);
 
-    @Query("Select * from hotels where hid = :first limit 1")
-    Hotels findByName(int first);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(Hotels... hotels);
+    void insertAll(List<Hotels> hotels);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Hotels hotel);

@@ -4,9 +4,11 @@ import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +26,12 @@ import com.example.bagpackers.MainActivity;
 import com.example.bagpackers.R;
 import com.example.bagpackers.RoomDB.AppDatabase;
 import com.example.bagpackers.TodoListAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,23 +51,7 @@ public class note_list_item extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        arr=new ArrayList<>();
-//        Place p=new Place();
-//        p.picture="android.resource://com.example.bagpackers/drawable/gilgit";
-//        p.name="Lahore";
-//
-//        Place x=new Place();
-//        x.picture="android.resource://com.example.bagpackers/drawable/ksmr";
-//        x.name="New York";
-//
-//
-//        Place y=new Place();
-//        y.picture="android.resource://com.example.bagpackers/drawable/ksmr";
-//        y.name="Islamabad";
-//
-//        arr.add(p);
-//        arr.add(x);
-//        arr.add(y);
+
 
        new getPlaces().execute();
 
@@ -164,6 +156,9 @@ public class note_list_item extends AppCompatActivity {
         onCreate(savedInstanceState);
 
     }
+
+
+
 }
 
 

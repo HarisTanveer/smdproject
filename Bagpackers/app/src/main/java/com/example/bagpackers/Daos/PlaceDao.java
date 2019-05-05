@@ -17,14 +17,10 @@ import java.util.List;
 public interface PlaceDao
 {
 
-    @Query("DELETE FROM " + "place" + " WHERE " + "pid" + " = :id")
-    int deleteById(long id);
 
     @Query("SELECT * FROM " + "Place")
     Cursor selectAll();
 
-    @Query("SELECT * FROM " + "Place" + " WHERE " + "pid" + " = :id")
-    Cursor selectById(long id);
 
     @Query("Select * from Place")
     List<Place> getAll();
@@ -32,11 +28,9 @@ public interface PlaceDao
     @Query("Select * from Place where location=:loc")
     List<Place> getAllbyProvince(String loc);
 
-    @Query("Select * from Place where pid = :first limit 1")
-    Place findByName(int first);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(Place... places);
+    void insertAll(List<Place> places);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Place place);

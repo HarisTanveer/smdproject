@@ -67,13 +67,14 @@ public class dbprovider1 extends ContentProvider {
                 cursor = cheese.selectAll();
             } else {
 
-                cursor = cheese.selectById(ContentUris.parseId(uri));
+                //cursor = cheese.selectById(ContentUris.parseId(uri));
             }
-            cursor.setNotificationUri(context.getContentResolver(), uri);
-            return cursor;
+          //  cursor.setNotificationUri(context.getContentResolver(), uri);
+           // return cursor;
         } else {
             throw new IllegalArgumentException("Unknown URI: " + uri);
         }
+        return null;
     }
 
     @Nullable
@@ -120,10 +121,10 @@ public class dbprovider1 extends ContentProvider {
                 if (context == null) {
                     return 0;
                 }
-                final int count = AppDatabase.getInstance(context).placeDao()
-                        .deleteById(ContentUris.parseId(uri));
+              //  final int count = AppDatabase.getInstance(context).placeDao()
+              //          .ContentUris.parseId(uri));
                 context.getContentResolver().notifyChange(uri, null);
-                return count;
+                //return count;
             default:
                 throw new IllegalArgumentException("Unknown URI: " + uri);
         }

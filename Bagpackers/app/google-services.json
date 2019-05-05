@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "599157418445",
-    "firebase_url": "https://final-bagpackers.firebaseio.com",
-    "project_id": "final-bagpackers",
-    "storage_bucket": "final-bagpackers.appspot.com"
+    "project_number": "1017080954692",
+    "firebase_url": "https://smd-project-final.firebaseio.com",
+    "project_id": "smd-project-final",
+    "storage_bucket": "smd-project-final.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:599157418445:android:31cd5dab68e49de8",
+        "mobilesdk_app_id": "1:1017080954692:android:31cd5dab68e49de8",
         "android_client_info": {
           "package_name": "com.example.bagpackers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "599157418445-gan7qsqhfp4k7fdnmep440v4hvlk0p2p.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.bagpackers",
-            "certificate_hash": "82ac68f6684b2c2d735d454fe649da3e9fe8011f"
-          }
-        },
-        {
-          "client_id": "599157418445-ekn42bo0kqookh3t7qsssteagm6ppnv7.apps.googleusercontent.com",
+          "client_id": "1017080954692-41l1pphct89mo7tpasosu3d9842jd006.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCpa0tdINKZuFlJLJwnFMKcF4zYlJV_T04"
+          "current_key": "AIzaSyB6ryz4Inzj5gbuC26vwpOCtUPymofqqfc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "599157418445-ekn42bo0kqookh3t7qsssteagm6ppnv7.apps.googleusercontent.com",
+              "client_id": "1017080954692-41l1pphct89mo7tpasosu3d9842jd006.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

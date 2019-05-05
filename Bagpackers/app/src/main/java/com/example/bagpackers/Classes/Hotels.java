@@ -5,20 +5,23 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.Serializable;
 @IgnoreExtraProperties
-@Entity
+@Entity(primaryKeys = {"name","placeid"})
 public class Hotels implements Serializable {
-    @PrimaryKey(autoGenerate = true)
-    public int hid;
+//    @PrimaryKey(autoGenerate = true)
+//    public int hid;
 
+    @NonNull
     @ColumnInfo(name = "name")
     public String name;
 
+    @NonNull
     @ColumnInfo(name = "placeid")
     public String placeid;
 

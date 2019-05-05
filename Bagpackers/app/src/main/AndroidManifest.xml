@@ -82,6 +82,9 @@
             android:authorities="com.example.smd.dbprovider1"
             android:exported="true" />
 
+
+        <service android:name=".MyFirebaseService"/>
+
     </application>
 
 </manifest>

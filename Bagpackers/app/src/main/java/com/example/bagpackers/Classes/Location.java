@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
@@ -14,10 +15,9 @@ import java.util.ArrayList;
 @IgnoreExtraProperties
 @Entity
 public class Location implements Serializable {
-    @PrimaryKey(autoGenerate = true)
-    public int lid;
 
-    @ColumnInfo(name = "province")
+    @NonNull
+    @PrimaryKey
     public String province;
 
 
@@ -31,8 +31,6 @@ public class Location implements Serializable {
 
     }
 
-//    @Ignore
-//    public ArrayList<Place> places=new ArrayList<>();
 
     @Ignore
    public Location(String Provinc)
