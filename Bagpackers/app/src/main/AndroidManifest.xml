@@ -27,7 +27,8 @@
         <activity android:name=".profile" />
         <activity
             android:name=".placeWali"
-            android:label="@string/title_activity_place_wali" />
+            android:label="@string/title_activity_place_wali"
+            android:configChanges="orientation"/>
         <activity
             android:name=".home"
             android:label="@string/title_activity_home"
@@ -35,6 +36,8 @@
         <activity android:name=".signup">
 
         </activity>
+
+
         <activity android:name=".login">
 
         </activity>

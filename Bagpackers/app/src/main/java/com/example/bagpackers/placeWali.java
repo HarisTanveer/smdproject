@@ -19,8 +19,6 @@ public class placeWali extends AppCompatActivity {
 
 
 
-
-
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -64,7 +62,6 @@ public class placeWali extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_place_wali);
-
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

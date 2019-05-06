@@ -16,7 +16,7 @@ import com.example.bagpackers.Daos.PlaceDao;
 
 import com.example.bagpackers.Daos.UserDao;
 
-@Database(entities =  {User.class, Hotels.class, Place.class, Location.class}, version=1)
+@Database(entities =  {User.class, Hotels.class, Place.class, Location.class}, version=1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
 

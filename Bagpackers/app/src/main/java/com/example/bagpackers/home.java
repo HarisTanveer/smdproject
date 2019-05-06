@@ -51,6 +51,7 @@ public class home extends AppCompatActivity
     private FirebaseAuth mAuth;
     String currentEmail;
     ImageView r;
+    public static final String session = "session";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,6 +180,7 @@ public class home extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            finishAffinity();
         }
     }
 
@@ -252,6 +254,11 @@ public void profilewala(View view)
             startActivity(intent);
 
         }
+         else if (id == R.id.logout)
+         {
+             logout();
+
+         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -288,5 +295,21 @@ public void profilewala(View view)
         editor.commit();
 
     }
+
+    public  void logout() {
+        SharedPreferences sharedpreferences = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+
+        editor.putBoolean(session, false);
+
+        editor.commit();
+        Intent intent =new Intent(home.this,login.class);
+        startActivity(intent);
+
+
+
+    }
+
+
 
 }

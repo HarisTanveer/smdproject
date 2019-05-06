@@ -1,5 +1,6 @@
 package com.example.bagpackers;
 
+import android.app.FragmentManager;
 import android.arch.persistence.room.Room;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -47,25 +49,28 @@ public class HotelListItem extends Fragment {
 
 
 
-    private EditText createText(){
-        text = new EditText(getContext());
-        text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        text.setHint("Search");
-        text.addTextChangedListener(new TextWatcher(){
+    private EditText createText()
+    {
+      text = new EditText(getContext());
+         text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+         text.setHint("Search");
+         text.addTextChangedListener(new TextWatcher() {
 
-            @Override
-            public void afterTextChanged(Editable arg0) { }
+             @Override
+             public void afterTextChanged(Editable arg0) {
+             }
 
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1,int arg2, int arg3) { }
+             @Override
+             public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+             }
 
-            @Override
-            public void onTextChanged(CharSequence text, int start, int before,int count) {
-                String check=text.toString();
-                adapter.getFilter().filter(check);
-            }
+             @Override
+             public void onTextChanged(CharSequence text, int start, int before, int count) {
+                 String check = text.toString();
+                 adapter.getFilter().filter(check);
+             }
 
-        });
+         });
 
         return text;
     }
@@ -93,9 +98,9 @@ public class HotelListItem extends Fragment {
     public void createView(){
 
 
-        layout.addView(createText());
-        layout.addView(createList());
+      layout.addView(createText());
 
+      layout.addView(createList());
       //  getActivity().setContentView(layout);
     }
 
@@ -111,7 +116,17 @@ public class HotelListItem extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            createView();
+           try
+           {
+               createView();
+         }
+
+           catch (Exception e){
+               cancel(true);
+               if (isCancelled()){
+                   return;
+               }
+           }
         }
     }
 
@@ -149,38 +164,38 @@ public class HotelListItem extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        setRetainInstance(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-         layout = new LinearLayout(getActivity());
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setFocusable(true);
-        layout.setFocusableInTouchMode(true);
 
-       x= (ArrayList<Place>)getActivity().getIntent().getSerializableExtra("list");
+
+            layout = new LinearLayout(getActivity());
+            layout.setOrientation(LinearLayout.VERTICAL);
+            layout.setFocusable(true);
+            layout.setFocusableInTouchMode(true);
+        x= (ArrayList<Place>)getActivity().getIntent().getSerializableExtra("list");
         selectedItem= (int)getActivity().getIntent().getSerializableExtra("index");
         new getHotels().execute();
-
-
-
         return layout;
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+
+
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        onCreate(savedInstanceState);
-
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        onCreate(outState);
     }
 }
 

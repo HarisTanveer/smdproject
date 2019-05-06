@@ -129,7 +129,16 @@ public class note_list_item extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            createView();
+
+            try{
+                createView();
+            }
+            catch (Exception e){
+                cancel(true);
+                if (isCancelled()){
+                    return;
+                }
+            }
         }
     }
 
@@ -153,7 +162,7 @@ public class note_list_item extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        onCreate(savedInstanceState);
+       // onCreate(savedInstanceState);
 
     }
 

@@ -1,10 +1,12 @@
 package com.example.bagpackers;
 
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
@@ -37,10 +39,23 @@ public class login extends AppCompatActivity {
     private TextView email;
     private TextView password;
     private ProgressBar loader;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String session = "session";
+    boolean darkTheme=false;
+    private SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedpreferences = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        darkTheme  =sharedpreferences.getBoolean(session,false);
+        if(darkTheme==true)
+        {
+            Intent intent =new Intent(login.this,home.class);
+            startActivity(intent);
+
+        }
        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         setContentView(R.layout.activity_login);
         MobileAds.initialize(this, "ca-app-pub-1643780640868125~3426418277");
@@ -125,11 +140,15 @@ public class login extends AppCompatActivity {
         {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful())
+                {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putBoolean(session, true);
+                    editor.commit();
                     Intent intent =new Intent(login.this,home.class);
                     startActivity(intent);
-
                 }
                 else
                 {
@@ -141,5 +160,9 @@ public class login extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
 }

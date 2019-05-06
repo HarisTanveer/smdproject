@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
-        }, 2800);
+        }, 1800);
 
 
 
