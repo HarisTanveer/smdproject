@@ -109,7 +109,7 @@ public class note_list_item extends AppCompatActivity {
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setFocusable(true);
         layout.setFocusableInTouchMode(true);
-
+        layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
 
         layout.addView(createText());
         layout.addView(createList());

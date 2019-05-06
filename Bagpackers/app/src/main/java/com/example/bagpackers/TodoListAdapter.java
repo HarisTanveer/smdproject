@@ -55,7 +55,7 @@ public class TodoListAdapter extends ArrayAdapter<com.example.bagpackers.Classes
         Uri uri = Uri.parse(t.picture);
         name.setImageURI(uri);
 
-        TextView place = (TextView) convertView.findViewById(R.id.myImageViewText);
+        TextView place = (TextView) convertView.findViewById(R.id.textView12);
         place.setText(t.name);
 
         return convertView;

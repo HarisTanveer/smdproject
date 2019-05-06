@@ -134,6 +134,7 @@ public class login extends AppCompatActivity {
                 else
                 {
                     Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_LONG).show();
+                    loader.setVisibility(View.GONE);
                 }
 
             }
