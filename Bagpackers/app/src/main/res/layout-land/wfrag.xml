@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/app"
+        android:background="@color/white"
         android:padding="20dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
@@ -21,7 +21,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/app" />
 
         <TextView
             android:id="@+id/updated_field"
@@ -30,7 +30,7 @@
             android:layout_below="@+id/city_field"
             android:layout_centerHorizontal="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"
+            android:textColor="#FF149CFF"
             android:textSize="13sp" />
 
         <TextView
@@ -53,7 +53,7 @@
             android:layout_marginStart="51dp"
             android:layout_marginTop="102dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#FFFFFF"
+            android:textColor="#FF149CFF"
             android:textSize="90sp" />
 
         <TextView
@@ -67,7 +67,7 @@
             android:layout_marginEnd="247dp"
             android:layout_marginBottom="167dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#FFFFFF"
+            android:textColor="#FF149CFF"
             android:textSize="24sp" />
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_marginTop="-80dp"
             android:layout_marginEnd="263dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FF149CFF" />
 
         <TextView
             android:id="@+id/humidity_field"
@@ -92,7 +92,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="201dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FF149CFF" />
 
         <TextView
             android:id="@+id/pressure_field"
@@ -107,7 +107,7 @@
             android:layout_marginEnd="17dp"
             android:layout_marginBottom="213dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FF149CFF" />
 
         <ProgressBar
             android:id="@+id/loader"
@@ -115,6 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:outlineSpotShadowColor="@color/app"
             android:layout_marginStart="319dp"
             android:layout_marginTop="111dp" />
 

@@ -2,9 +2,13 @@ package com.example.bagpackers;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -51,7 +55,8 @@ public class note_list_item extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();
 
        new getPlaces().execute();
 

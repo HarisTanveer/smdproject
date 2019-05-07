@@ -1,5 +1,6 @@
 package com.example.bagpackers;
 
+import android.arch.persistence.room.Room;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,10 +28,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.bagpackers.Classes.Hotels;
 import com.example.bagpackers.Classes.Place;
+import com.example.bagpackers.Classes.User;
+import com.example.bagpackers.RoomDB.AppDatabase;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +58,10 @@ public class home extends AppCompatActivity
     String currentEmail;
     ImageView r;
     public static final String session = "session";
+    private String imageURL;
+    TextView email;
+    TextView name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,9 +137,20 @@ public class home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        r=header.findViewById(R.id.profilepic);
+        name=header.findViewById(R.id.a90);
+        email=header.findViewById(R.id.a9090);
 
 
 
+        Thread t=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                setValues();
+            }
+        });
+        t.start();
 
 
         startDataSyncService();
@@ -297,12 +318,13 @@ public void profilewala(View view)
     }
 
     public  void logout() {
-        SharedPreferences sharedpreferences = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-
-        editor.putBoolean(session, false);
-
-        editor.commit();
+//        SharedPreferences sharedpreferences = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedpreferences.edit();
+//
+//        editor.putBoolean(session, false);
+//
+//        editor.commit();
+        FirebaseAuth.getInstance().signOut();
         Intent intent =new Intent(home.this,login.class);
         startActivity(intent);
 
@@ -310,6 +332,41 @@ public void profilewala(View view)
 
     }
 
+
+
+
+
+    public void setValues()
+    {
+        FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
+        currentEmail=currentUser.getEmail();
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/"+currentEmail);
+        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                imageURL = uri.toString();
+                Glide.with(getApplicationContext()).load(imageURL).into(r);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
+
+
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "user").build();
+        User curr=db.userDao().findByName(currentEmail);
+
+
+        name.setText(curr.name);
+
+
+        email.setText(curr.email);
+
+
+    }
 
 
 }

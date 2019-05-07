@@ -12,7 +12,7 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/weather"
-            android:title="Slideshow" />
+            android:title="DAY MODE" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/moon"

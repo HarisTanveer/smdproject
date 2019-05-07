@@ -1,6 +1,5 @@
 package com.example.bagpackers;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,9 +12,6 @@ import android.widget.TextView;
 
 import com.example.bagpackers.Classes.Place;
 
-import org.w3c.dom.Text;
-
-import java.net.URI;
 import java.util.ArrayList;
 
 
@@ -61,7 +57,7 @@ public class placeFrag extends Fragment {
         TextView t=getView().findViewById(R.id.textView4);
         t.setText(placeArrayList.get(index).name);
 
-        ImageView a=getView().findViewById(R.id.imageView);
+        ImageView a=getView().findViewById(R.id.imageView90);
         Uri uri = Uri.parse(placeArrayList.get(index).picture);
         a.setImageURI(uri);
 

@@ -52,7 +52,7 @@ public class WeatherFrag extends Fragment
     Typeface weatherFont;
     String city ;
     /* Please Put your API KEY here */
-    String OPEN_WEATHER_MAP_API = "aa736ce3d5430bad37d09e4b6835a7bb";
+    String OPEN_WEATHER_MAP_API = "e5e93c96e4cdf47b2e40825bd6b98d41";
     /* Please Put your API KEY here */
 
     public WeatherFrag() {
@@ -79,6 +79,7 @@ public class WeatherFrag extends Fragment
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        OPEN_WEATHER_MAP_API="e5e93c96e4cdf47b2e40825bd6b98d41";
         return inflater.inflate(R.layout.wfrag, container, false);
 
 
@@ -121,6 +122,7 @@ public class WeatherFrag extends Fragment
         weatherIcon.setTypeface(weatherFont);
 
         taskLoadUp(city);
+
 
         selectCity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,10 +250,13 @@ public class WeatherFrag extends Fragment
             return xml;
         }
         @Override
-        protected void onPostExecute(String xml) {
+        protected void onPostExecute(String xml)
+        {
 
-            try {
-                JSONObject json = new JSONObject(xml);
+            try
+            {
+                JSONObject  json=null;
+                  json = new JSONObject(xml);
                 if (json != null) {
                     JSONObject details = json.getJSONArray("weather").getJSONObject(0);
                     JSONObject main = json.getJSONObject("main");
@@ -270,7 +275,9 @@ public class WeatherFrag extends Fragment
                     loader.setVisibility(View.GONE);
 
                 }
-            } catch (JSONException e) {
+            }
+            catch (JSONException e)
+            {
                 Toast.makeText(getActivity(), "Error, Check City", Toast.LENGTH_SHORT).show();
             }
 

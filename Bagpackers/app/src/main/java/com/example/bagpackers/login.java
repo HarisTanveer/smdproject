@@ -47,16 +47,25 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedpreferences = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        darkTheme  =sharedpreferences.getBoolean(session,false);
-        if(darkTheme==true)
-        {
-            Intent intent =new Intent(login.this,home.class);
-            startActivity(intent);
 
+//        sharedpreferences = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedpreferences.edit();
+//        darkTheme  =sharedpreferences.getBoolean(session,false);
+//        if(darkTheme==true) {
+//            Intent intent = new Intent(login.this, home.class);
+//            startActivity(intent);
+//
+//        }
+
+        FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser!=null)
+        {
+            Intent intent = new Intent(login.this, home.class);
+            startActivity(intent);
         }
-       // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+
+            // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         setContentView(R.layout.activity_login);
         MobileAds.initialize(this, "ca-app-pub-1643780640868125~3426418277");
         mAdView = findViewById(R.id.adView);
@@ -143,10 +152,10 @@ public class login extends AppCompatActivity {
                 if (task.isSuccessful())
                 {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedpreferences.edit();
-                    editor.putBoolean(session, true);
-                    editor.commit();
+//                    sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = sharedpreferences.edit();
+//                    editor.putBoolean(session, true);
+//                    editor.commit();
                     Intent intent =new Intent(login.this,home.class);
                     startActivity(intent);
                 }

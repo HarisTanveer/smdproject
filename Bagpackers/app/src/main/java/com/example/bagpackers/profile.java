@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +36,8 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         r=findViewById(R.id.imageView3);
-
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();
         FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
         currentEmail=currentUser.getEmail();
         StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/"+currentEmail);

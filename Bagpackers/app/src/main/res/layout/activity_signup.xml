@@ -103,7 +103,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView2" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView90"
         android:layout_width="0dp"
         android:layout_height="176dp"
         android:layout_marginStart="8dp"
