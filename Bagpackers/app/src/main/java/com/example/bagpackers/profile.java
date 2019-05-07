@@ -35,36 +35,37 @@ public class profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        r=findViewById(R.id.imageView3);
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.hide();
-        FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
-        currentEmail=currentUser.getEmail();
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/"+currentEmail);
-        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                imageURL = uri.toString();
-                Glide.with(getApplicationContext()).load(imageURL).into(r);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-            }
-        });
+           r = findViewById(R.id.imageView3);
+            ActionBar actionbar = getSupportActionBar();
+            actionbar.hide();
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            currentEmail = currentUser.getEmail();
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/" + currentEmail);
+            storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    imageURL = uri.toString();
+                    Glide.with(getApplicationContext()).load(imageURL).into(r);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+                }
+            });
 
-        Thread t=new Thread(new Runnable() {
-            @Override
-            public void run() {
-           setValues();
-            }
-        });
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    setValues();
+                }
+            });
 
-t.start();
+            t.start();
+
+
 
     }
-
 
 
 

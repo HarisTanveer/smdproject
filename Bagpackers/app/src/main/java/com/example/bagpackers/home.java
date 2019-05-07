@@ -317,13 +317,8 @@ public void profilewala(View view)
 
     }
 
-    public  void logout() {
-//        SharedPreferences sharedpreferences = getSharedPreferences(login.MyPREFERENCES, Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedpreferences.edit();
-//
-//        editor.putBoolean(session, false);
-//
-//        editor.commit();
+    public  void logout()
+    {
         FirebaseAuth.getInstance().signOut();
         Intent intent =new Intent(home.this,login.class);
         startActivity(intent);
@@ -367,6 +362,7 @@ public void profilewala(View view)
 
 
     }
+
 
 
 }
