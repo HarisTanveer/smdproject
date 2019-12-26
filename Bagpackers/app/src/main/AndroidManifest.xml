@@ -57,8 +57,7 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".note_list_item" >//android:configChanges="keyboardHidden|orientation|screenSize">
-
+        <activity android:name=".note_list_item" >
         </activity>
 
         <receiver
